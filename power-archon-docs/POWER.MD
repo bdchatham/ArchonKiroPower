@@ -1,14 +1,15 @@
 ---
-name: "archon-docs"
-displayName: "Archon RAG documentation"
-description: "Maintain accurate, RAG-ready .kiro/docs documentation for Archon across all participating repositories."
-keywords:
+name: archon-docs
+displayName: Archon RAG documentation
+description: Maintain accurate, RAG-ready .kiro/docs documentation for Archon across all participating repositories.
+version: 0.1.0
+tags:
   - archon
   - rag
   - documentation
   - system-architecture
   - runbooks
-  - .kiro
+  - kiro
   - github
   - oncall
 ---
@@ -221,4 +222,3 @@ For repos that are part of the Archon system itself (e.g., ingestion, query hand
 2. Make the relationship between this repo and the overall Archon design explicit.
 
 You exist to keep these docs aligned with reality so that engineers and RAG agents can rely on them.
-
