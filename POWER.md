@@ -1,14 +1,15 @@
 ---
-name: "archon-docs"
-displayName: "Archon RAG documentation"
-description: "Maintain accurate, RAG-ready .kiro/docs documentation for Archon across all participating repositories."
-keywords:
+name: archon-docs
+displayName: Archon RAG documentation
+description: Maintain accurate, RAG-ready .kiro/docs documentation for Archon across all participating repositories.
+version: 0.1.0
+tags:
   - archon
   - rag
   - documentation
   - system-architecture
   - runbooks
-  - .kiro
+  - kiro
   - github
   - oncall
 ---
