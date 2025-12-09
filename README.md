@@ -53,3 +53,95 @@ Add this power to your Kiro workspace:
 
 ```bash
 kiro power add archon-docs
+Or include it in your kiro.yaml:
+
+yaml
+Copy code
+powers:
+  - archon-docs
+🛠 Usage
+Once installed, activate it in any repo where you want Archon-ready documentation.
+
+Common commands:
+
+bash
+Copy code
+kiro use archon-docs setup
+Creates missing .kiro/docs files and scaffolds an initial structure.
+
+bash
+Copy code
+kiro use archon-docs audit
+Audits documentation for accuracy, grounding, missing content, and RAG-readiness.
+
+bash
+Copy code
+kiro use archon-docs update
+Updates relevant docs based on recent code or infrastructure changes.
+
+📁 Expected Repo Layout
+A repo using this power will contain:
+
+kotlin
+Copy code
+CLAUDE.md
+.kiro/
+  docs/
+    overview.md
+    architecture.md
+    operations.md
+    api.md
+    data-models.md
+    faq.md
+Archon ingests only the .kiro/docs directory, making documentation predictable and structured across all repositories.
+
+📑 Relationship to CLAUDE.md
+CLAUDE.md is the contract.
+This power is the enforcer.
+
+If CLAUDE.md exists, the power always defers to its rules.
+
+If it doesn’t exist, the power scaffolds a minimal, contract-compliant version.
+
+CLAUDE.md controls:
+
+What must be documented
+
+Allowed sources of truth
+
+Security guardrails
+
+Repo-specific overrides
+
+🤝 Why Use This?
+Archon solves organizational knowledge at scale by building a consistent, queryable semantic layer across all repositories.
+
+This power ensures:
+
+Documentation is always fresh.
+
+Teams follow a consistent structure.
+
+Docs remain grounded and auditably correct.
+
+Archon RAG retrieval becomes dramatically better.
+
+Every repo is RAG-ready on day one.
+
+🔒 Security
+This power never stores secrets, credentials, or proprietary endpoints in documentation.
+If sensitive content appears, the power marks it for human review rather than committing it.
+
+📄 License
+MIT License (or update as desired).
+
+yaml
+Copy code
+
+---
+
+If you want, I can also generate:
+
+- A GitHub template repository outline that includes `CLAUDE.md`, `.kiro/docs/*`, and starter files.
+- A `power.json` manifest or Kiro CLI configuration.
+- A logo/banner for the README.
