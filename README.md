@@ -1,153 +1,78 @@
 # Archon Docs Power
 
-The **Archon Docs Power** is a Kiro power that keeps `.kiro/docs` documentation accurate, structured, and grounded in code for repositories participating in the **Archon** RAG knowledge system.  
+A Kiro Power for maintaining accurate, RAG-ready `.kiro/docs` documentation for Archon across all participating repositories.
 
-It automates the creation, updating, and maintenance of documentation that Archon ingests into its vector knowledge base. Whenever code or architecture changes, this power helps keep the RAG-ready docs in sync with reality.
+## What This Power Does
 
----
+This power helps you:
+- Initialize and maintain `.kiro/docs` structure in Archon repositories
+- Ensure documentation is grounded in code and infrastructure
+- Follow RAG-friendly documentation patterns
+- Maintain the Archon documentation contract via `CLAUDE.md`
 
-## 🚀 What This Power Does
+## Installation
 
-- Initializes a standard `.kiro/docs` layout in any repo.
-- Ensures required doc files exist with a consistent structure:
-  - `overview.md`
-  - `architecture.md`
-  - `operations.md`
-  - `api.md`
-  - `data-models.md`
-  - `faq.md`
-- Reads and obeys the repo’s `CLAUDE.md` documentation contract.
-- Audits existing documentation for:
-  - Accuracy and grounding in code/infra.
-  - RAG-friendly structure (clear sections, good chunk boundaries).
-- Updates docs when asked, keeping them:
-  - Traceable (with sources).
-  - Small and coherent.
-  - Free of hallucinated or speculative content.
+### From GitHub
 
----
+Add this repository in Kiro's Powers UI:
 
-## 🧠 How It Works
+1. Open Kiro Powers panel
+2. Click "Available Powers" → "Manage Repos" → "Add Repository"
+3. Select "Git Repository"
+4. Enter URL: `https://github.com/bdchatham/ArchonKiroPower`
+5. The power will be available as "Archon RAG Documentation"
 
-The power follows a simple model:
+### From Local Directory (Development)
 
-1. **Read `CLAUDE.md`**  
-   Understands the local documentation rules and any repo-specific constraints.
+For local testing:
 
-2. **Manage `.kiro/docs`**  
-   Creates missing files, updates stale content, and enforces structure.
+1. Clone this repository
+2. In Kiro Powers UI: "Available Powers" → "Manage Repos" → "Add Repository"
+3. Select "Local Directory"
+4. Point to the `archon-docs` subdirectory in this repo
 
-3. **Ground everything in code and infra**  
-   No invented endpoints or flows. Non-trivial statements are backed by:
-   - Source files
-   - Infra definitions
-   - Existing specs
+## Repository Structure
 
-4. **Optimize for Archon ingestion**  
-   Documentation is structured into small, focused sections that make high-quality RAG chunks.
-
----
-
-## 📦 Installation
-
-Add this power to your Kiro workspace:
-
-```bash
-kiro power add archon-docs
-````
-
-Or include it in your `kiro.yaml`:
-
-```yaml
-powers:
-  - archon-docs
+```
+ArchonKiroPower/
+├── archon-docs/          # The actual power (clean, installable)
+│   └── POWER.md          # Power documentation and instructions
+├── dist/                 # Build artifacts (gitignored)
+├── .gitignore           # Git ignore rules
+├── README.md            # This file
+└── package-power.sh     # Build script (if needed)
 ```
 
----
+## Power Structure
 
-## 🛠 Usage
+The power follows Kiro's power specification:
+- **POWER.md**: Complete documentation with frontmatter metadata
+- No `mcp.json`: This is a Knowledge Base Power (pure documentation)
+- No `steering/`: All content fits in POWER.md
 
-Once installed, activate it in any repo where you want Archon-ready documentation.
+## Development
 
-Common flows (names depend on how you wire commands, for example):
+The `archon-docs/` directory contains only the files allowed in a Kiro Power:
+- `POWER.md` (required)
 
-```bash
-# Initialize .kiro/docs structure
-kiro use archon-docs setup
+Development and build files are kept at the repository root and excluded from the power package.
+
+## Usage
+
+Once installed, activate the power when working on Archon repositories:
+
+```
+"Set up Archon docs for this repo"
+"Update docs after infrastructure changes"
+"Audit .kiro/docs for accuracy"
 ```
 
-```bash
-# Audit existing docs for accuracy and gaps
-kiro use archon-docs audit
-```
+The power will guide you through maintaining RAG-ready documentation that follows the Archon contract.
 
-```bash
-# Update docs after changes
-kiro use archon-docs update
-```
+## Author
 
-You can alias these or wrap them in your own scripts/automation.
+Brandon Chatham (@bdchatham)
 
----
+## License
 
-## 📁 Expected Repo Layout
-
-A repo using this power typically looks like:
-
-```text
-CLAUDE.md
-.kiro/
-  docs/
-    overview.md
-    architecture.md
-    operations.md
-    api.md
-    data-models.md
-    faq.md
-```
-
-Archon ingests the Markdown files under `.kiro/docs`, giving you a consistent, predictable RAG surface across repos.
-
----
-
-## 📑 Relationship to `CLAUDE.md`
-
-* `CLAUDE.md` is the **contract**.
-* The Archon Docs Power is the **enforcer**.
-
-Rules of thumb:
-
-* If `CLAUDE.md` exists, the power defers to its instructions.
-* If it doesn’t exist, the power can scaffold a minimal Archon-style `CLAUDE.md`.
-* `CLAUDE.md` controls:
-
-  * What must be documented.
-  * Acceptable sources of truth.
-  * Security and redaction rules.
-  * Repo-specific overrides.
-
----
-
-## 🤝 Why Use This?
-
-Archon aims to build a consistent, queryable semantic layer over your software systems.
-This power helps by ensuring:
-
-* Documentation is always fresh and tied to real code.
-* Teams follow a consistent structure across repos.
-* Docs are auditably correct and source-linked.
-* RAG retrieval quality improves dramatically.
-* New repos are “Archon-ready” from day one.
-
----
-
-## 🔒 Security
-
-* No secrets, tokens, or credentials should be written into `.kiro/docs` or `CLAUDE.md`.
-* If sensitive content is detected, treat it as a red flag and surface it for human review instead of committing it.
-
----
-
-## 📄 License
-
-MIT License (or update as appropriate for your org).
+MIT

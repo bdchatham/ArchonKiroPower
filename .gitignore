@@ -1,19 +1,13 @@
-# Kiro Power - Git Best Practices
-# This ensures the power package stays clean for distribution
+# Build artifacts
+dist/
 
-# Don't track git metadata in the power package
-.git/
-
-# Common development files
+# macOS
 .DS_Store
-*.swp
-*.swo
-*~
 
-# IDE files
+# Editor
 .vscode/
 .idea/
 
 # Temporary files
 *.tmp
-*.log
+*.bak
